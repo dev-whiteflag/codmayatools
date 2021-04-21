@@ -1515,7 +1515,7 @@ def ExportMeshData(joints, xmodel, merge_mesh = True):
                 continue
             # Loop indices
             # vertexIndices.length() has 3 values per triangle
-            for i in range(triangleIndices.length()/3):
+            for i in range(triangleIndices.__len__() // 3):
                 # New xModel Face
                 xface = xModel.Face(0 if merge_mesh else len(meshes)-1 , materialDict[polyMaterial[0]])
                 # Put local indices into an array for easy access
@@ -2859,7 +2859,7 @@ def GeneralWindow_ExportSelected(windowID, exportingMultiple):
 
     # Handle response
 
-    if type(response) == str or type(response) == unicode:
+    if type(response) == str:
         if exportingMultiple:
             MessageBox("Slot %i\n\n%s" % (slotIndex, response))
         else:
